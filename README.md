@@ -440,38 +440,6 @@ Jaehyun Byun, Jihye Ryu, Seokhee Jeon
 
 <br>
 
-## 💡 Lessons Learned
-
-프로젝트 인사이트
-
-### 🔧 Cross-Platform Integration Problem-Solving
-
-이종 플랫폼 통합에서의 기술적 문제 해결
-
-Initially attempted native Galaxy Watch → WebSocket server integration, but faced API permission delays and Wear OS complexity. Pivoted to **HypeRate third-party relay service**, reducing development overhead while maintaining functionality. Learned that leveraging external solutions can be strategic for resource-constrained projects.
-
-초기에는 갤럭시 워치에서 서버를 통해 직접 심박수 데이터를 전송하는 네이티브 연동을 시도했으나, 갤럭시 헬스케어 API 허가 지연과 Wear OS 개발 복잡도 문제에 직면했습니다. **HypeRate 서드파티 중계 서비스**로 전환하여 기능은 유지하면서 개발 복잡도를 낮출 수 있었습니다. 모든 것을 직접 구현하기보다 외부 솔루션을 적절히 활용하는 것이 제한된 리소스 내 프로젝트를 완수하는 전략임을 배웠습니다.
-
-### 📊 Data-Driven Decision Making
-
-데이터 기반 의사결정의 중요성
-
-Designed timestamp-synchronized logging to answer "which haptic pattern works best?" The pipeline enabled quantitative comparison across conditions, conclusively identifying breathing-guided haptics as optimal. Experienced firsthand how **data pipeline design creates the foundation for evidence-based decisions**.
-
-"어떤 햅틱 패턴이 가장 효과적인가?"라는 질문에 답하기 위해 타임스탬프 동기화 로깅 시스템을 설계했습니다. 파이프라인을 통해 조건 간 정량적 비교가 가능해졌고, 심호흡 유도 햅틱이 최적이라는 결론을 도출할 수 있었습니다. **데이터 파이프라인 설계가 근거 기반 의사결정의 토대가 되는 과정**을 직접 체감했습니다.
-
-### 🚀 Research to Product Transition
-
-학술 연구에서 창업 아이템으로의 전환
-
-Post-KCC publication, preparing for Vietnam Mobile Summit revealed the gap between academic validation and market application. Research requires controlled experiments and statistical rigor; startup exhibition demands **immediate value proposition and demonstrable prototypes**. Refined UX based on qualitative feedback and simplified technical complexity for general users.
-
-KCC 2024 논문 발표 이후 Vietnam Mobile Summit 전시를 준비하면서 학술적 검증과 시장 적용 사이의 간극을 경험했습니다. 논문에서는 통제된 실험과 통계적 엄밀성이 핵심이었다면, 창업 전시에서는 **즉각적인 가치 제안과 시연 가능한 프로토타입**이 필요했습니다. 정성 평가에서 도출된 사용성 이슈를 개선하고 복잡한 기술 스택을 일반 사용자를 위해 단순화하고자 했습니다.
-
----
-
-<br>
-
 ## 📚 References
 
 1. 권석만. 현대 이상심리학. 서울 학지사. 2012
