@@ -1,1 +1,492 @@
-# SocialCalm
+<div align="center">
+
+# 🧘 Calmpilot
+
+  <img src="ReadMe/Introduce.gif" width="50%" />
+
+> *"Let your body calm itself." "몸이 스스로 안정을 찾도록."*  
+> *Real-time biometrics meet adaptive haptic feedback. 실시간 생체 신호가 적응형 햅틱 피드백을 만나다.*
+
+</div>
+
+🧘 Calmpilot is a **research project investigating how haptic feedback patterns affect anxiety reduction in VR exposure therapy**. Using real-time heart rate data from wearables, the system automatically triggers calming haptic patterns when physiological arousal exceeds thresholds. We designed three clinically-grounded haptic patterns—slow vibration, breathing guidance, and butterfly hug—and validated their effectiveness through controlled experiments in a VR public speaking scenario. Our findings show that breathing-guided haptics achieved the most significant and sustained heart rate reduction (avg. 4 BPM decrease).
+
+<br>
+
+🧘 Calmpilot은 **VR 노출 치료에서 햅틱 피드백 패턴이 불안 감소에 미치는 영향을 연구한 프로젝트**입니다. 웨어러블 디바이스의 실시간 심박수 데이터를 활용해 생리적 각성이 임계값을 초과하면 자동으로 이완 햅틱 패턴을 트리거합니다. 임상적으로 검증된 세 가지 햅틱 패턴—느린 진동, 심호흡 유도, 나비포옹법—을 설계하고 VR 발표 환경에서 통제된 실험을 통해 효과를 검증했습니다. 분석 결과 심호흡 유도 햅틱이 가장 유의미하고 지속적인 심박수 감소(평균 4 BPM 감소)를 보였습니다.
+
+---
+
+<div align="center">
+
+## 📋 Table of Contents
+
+1. [🎯 Overview](#-overview)
+2. [📚 Research Background](#-research-background)
+3. [⚙️ System Architecture](#️-system-architecture)
+4. [🔬 Experiment Design](#-experiment-design)
+5. [📊 Data Analysis](#-data-analysis)
+6. [🏆 Publications & Awards](#-publications--awards)
+
+---
+
+</div>
+
+<div align="center">
+  
+## 🎯 Overview
+
+### 📖 Introduce
+
+**Project**: Calmpilot  
+**Type**: Academic Research (First Author)  
+**Duration**: 2023.09 ~ 2024.02  
+**Advisor**: Prof. Seokhee Jeon (KHU Haptics and Virtual Reality Lab)
+
+![C#](https://img.shields.io/badge/C%23-239120?style=flat-square&logo=csharp&logoColor=white) ![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white) | ![Unity](https://img.shields.io/badge/Unity-000000?style=flat-square&logo=unity&logoColor=white) ![Galaxy Watch](https://img.shields.io/badge/Galaxy_Watch-1428A0?style=flat-square&logo=samsung&logoColor=white) ![bhaptics](https://img.shields.io/badge/bhaptics-FF6B35?style=flat-square&logoColor=white) | ![Pandas](https://img.shields.io/badge/Pandas-150458?style=flat-square&logo=pandas&logoColor=white) ![Seaborn](https://img.shields.io/badge/Seaborn-3776AB?style=flat-square&logoColor=white) | ![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white) ![Notion](https://img.shields.io/badge/Notion-000000?style=flat-square&logo=notion&logoColor=white)
+
+<br>
+
+### 👥 Team
+
+| Position | Role | Name | Affiliation |
+|:--|:--|:--|:--|
+| 💻 Research | First Author, System Design & Data Pipeline | [Jaehyun Byun](https://github.com/BynPlay) | Kyung Hee Univ.<br>Computer Science |
+| 💻 Research | Co-Author, Experiment Support | [Jihye Ryu](https://github.com/Domwis-IR) | Kyung Hee Univ.<br>Software Convergencec |
+| 💻 Research | Co-Author, Data Analysis | [Hyeon Roh](https://github.com/YesHyeon) | Kyung Hee Univ.<br>Industrial & Management Engineering |
+| 🎓 Advisor | Academic Advisor | [Prof. Seokhee Jeon](http://haptics.khu.ac.kr/) | KHU HVR Lab | 
+
+</div>
+
+---
+
+<br>
+
+## 📚 Research Background
+
+<div align="center">
+
+### 🎯 Research Question
+
+</div>
+
+> **How can we design a data pipeline that connects real-time biometric collection to automated therapeutic intervention?**  
+> 사용자 데이터를 정량적으로 분석하고 이를 활용하기 위해서는 데이터 수집부터 의사 결정까지 어떻게 연결할 수 있을까?
+
+<br>
+
+### 📖 Problem Statement
+
+Social anxiety disorder affects approximately **7.6% of children globally**, with university students showing particularly high prevalence—4 out of 10 experience social anxiety symptoms. While exposure therapy combined with relaxation training shows superior treatment outcomes, two critical barriers exist:
+
+사회 공포증은 전 세계 아동의 약 **7.6%**에게 영향을 미치며, 특히 대학생 집단에서 높은 유병률을 보입니다—10명 중 4명이 사회적 상황에서 불안을 경험합니다. 노출 요법과 이완 훈련을 병합하면 치료 효과가 우수하지만, 두 가지 핵심적인 장벽이 존재합니다:
+
+| Challenge | Description |
+|:--|:--|
+| **Expert Scarcity** | CBT specialists require 1+ years of training; supply cannot meet demand<br>인지행동치료 전문가 양성에 최소 1년 이상 소요, 수요 대비 공급 부족 |
+| **Real-time Intervention** | Third-party cognitive guidance is nearly impossible during social interactions<br>사회적 상호작용 중 제3자의 실시간 인지 행동 유도가 어려움 |
+
+<br>
+
+### 🔍 Prior Work
+
+| Study | Key Finding | Our Application |
+|:--|:--|:--|
+| **Azevedo et al. (2017)** | Wrist vibration 20% slower than resting HR reduced anticipatory anxiety (p=0.027 skin conductance, p=0.047 self-report)<br>안정 시 심박수보다 20% 느린 손목 진동이 예기 불안 감소 | Slow vibration pattern at sub-heartbeat frequency<br>심박수 이하 주파수의 느린 진동 패턴 |
+| **Haynes et al. (2022)** | Breathing-guided haptic cushion most effective among 5 prototypes for tension relief<br>5가지 프로토타입 중 심호흡 유도 햅틱 쿠션이 긴장 완화에 가장 효과적 | Abdominal breathing guidance pattern<br>복식호흡 유도 패턴 |
+| **Deusdado & Antunes (2023)** | bHaptics TactSuit in VR rehabilitation: sequential motor activation for emotional connection<br>VR 재활에서 bHaptics TactSuit의 순차적 모터 활성화가 정서적 교감 전달 | Butterfly hug pattern with alternating shoulder taps<br>양쪽 어깨 교차 탭의 나비포옹법 패턴 |
+
+---
+
+<br>
+
+## ⚙️ System Architecture
+
+<div align="center">
+  <img src="ReadMe/Architecture.png" width="70%" />
+</div>
+
+<br>
+
+### 🔧 Cross-Platform Data Pipeline
+
+이종 플랫폼 데이터 파이프라인
+
+```
+┌──────────────────┐    ┌──────────────────┐    ┌──────────────────┐    ┌──────────────────┐
+│  Wearable Layer  │    │  Streaming Layer │    │   Client Layer   │    │   Output Layer   │
+│  Galaxy Watch 6  │    │     HypeRate     │    │   Unity Engine   │    │  bhaptics Suit   │
+├──────────────────┤    ├──────────────────┤    ├──────────────────┤    ├──────────────────┤
+│ • HR Sensor      │    │ • WebSocket API  │    │ • Data Reception │    │ • 40 Vibration   │
+│ • 1Hz Sampling   │───→│ • Real-time      │───→│ • Threshold      │───→│   Motors         │
+│ • BPM Output     │    │   Relay          │    │   Detection      │    │ • Pattern Play   │
+│                  │    │ • Multi-device   │    │ • CSV Logging    │    │ • Haptic Design  │
+└──────────────────┘    │   Support        │    │ • Trigger Logic  │    └──────────────────┘
+                        └──────────────────┘    └──────────────────┘
+```
+
+<br>
+
+### 📡 Real-time Heart Rate Streaming
+
+실시간 심박수 스트리밍
+
+| Component | Implementation |
+|:--|:--|
+| **Sensor** | Galaxy Watch 6 optical HR sensor, 1-second interval sampling<br>갤럭시 워치 6 광학 심박 센서, 1초 간격 샘플링 |
+| **Middleware** | HypeRate WebSocket relay—unified API for diverse wearables<br>HypeRate WebSocket 중계—다양한 웨어러블 통합 API |
+| **Reception** | Unity HypeRate SDK, real-time BPM variable access<br>Unity HypeRate SDK, 실시간 BPM 변수 접근 |
+| **Threshold** | HR ≥ 115 BPM triggers haptic feedback (pilot test max: 130, normal: 60-100)<br>심박수 115 이상 시 햅틱 피드백 트리거 (파일럿 테스트 최대: 130, 정상: 60-100) |
+
+<br>
+
+### 📝 Timestamp-Synchronized Logging System
+
+타임스탬프 동기화 로깅 시스템
+
+```csharp
+// CSV Logging with StreamWriter
+public class BiometricLogger : MonoBehaviour
+{
+    private StreamWriter writer;
+    private string filepath;
+    
+    void Start()
+    {
+        filepath = $"Data/HR_{participantID}_{DateTime.Now:yyyyMMdd_HHmmss}.csv";
+        writer = new StreamWriter(filepath);
+        writer.WriteLine("Timestamp,HeartRate,FeedbackType,ScenePhase");
+    }
+    
+    void OnHeartRateReceived(int bpm)
+    {
+        string timestamp = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff");
+        string feedbackType = currentFeedback.ToString();
+        string phase = currentScene.ToString();
+        
+        writer.WriteLine($"{timestamp},{bpm},{feedbackType},{phase}");
+        writer.Flush();
+    }
+}
+```
+
+| Log Type | Data Captured | Interval |
+|:--|:--|:--|
+| **Heart Rate** | BPM + Timestamp<br>심박수 + 타임스탬프 | 5-second sampling<br>5초 간격 샘플링 |
+| **Haptic Events** | Pattern type + Trigger time<br>패턴 유형 + 트리거 시각 | On occurrence<br>발생 시 |
+| **Scene Phases** | Waiting room entry/exit, Presentation start/end<br>대기실 입장/퇴장, 발표 시작/종료 | On transition<br>전환 시 |
+
+---
+
+<br>
+
+## 🎨 Haptic Feedback Design
+
+햅틱 피드백 설계
+
+<div align="center">
+  <img src="ReadMe/HapticDesign.png" width="60%" />
+</div>
+
+<br>
+
+### 🎛️ Three Clinically-Grounded Patterns
+
+임상적으로 검증된 세 가지 패턴
+
+Patterns were designed using **bhaptics Designer**—a web-based haptic authoring tool for TactSuit's 40 vibration motors.
+
+패턴은 **bhaptics Designer**를 사용해 설계했습니다—TactSuit의 40개 진동 모터를 위한 웹 기반 햅틱 저작 도구입니다.
+
+| Pattern | Clinical Basis | Implementation |
+|:--|:--|:--|
+| **🫀 Slow Vibration** | Azevedo (2017): Sub-heartbeat rhythm induces physiological entrainment<br>심박 이하 리듬이 생리적 동조 유도 | 10-second continuous vibration at 20% below resting HR frequency<br>안정 시 심박수보다 20% 느린 주파수로 10초간 지속 진동 |
+| **🌬️ Breathing Guide** | Haynes (2022): Most effective for tension relief<br>긴장 완화에 가장 효과적 | Abdominal-centered expanding/contracting circular vibration pattern<br>복부 중앙 기준 확장/수축하는 원형 진동 패턴 |
+| **🦋 Butterfly Hug** | EMDR-based trauma therapy technique<br>EMDR 기반 외상 치료 기법 | Alternating single taps on left/right shoulders<br>양쪽 어깨를 번갈아 단발적으로 두드림 |
+
+<br>
+
+### 🔄 Adaptive Trigger Algorithm
+
+적응형 트리거 알고리즘
+
+```csharp
+// Threshold-based Haptic Trigger
+void Update()
+{
+    if (currentHeartRate >= THRESHOLD_BPM)  // 115 BPM
+    {
+        if (!isFeedbackActive && CanTriggerFeedback())
+        {
+            TriggerHapticPattern(assignedPattern);
+            LogFeedbackEvent(assignedPattern, currentHeartRate);
+            isFeedbackActive = true;
+        }
+    }
+}
+
+void TriggerHapticPattern(HapticType type)
+{
+    switch (type)
+    {
+        case HapticType.SlowVibration:
+            bHapticsSDK.Play("slow_vibration_10s");
+            break;
+        case HapticType.BreathingGuide:
+            bHapticsSDK.Play("breathing_guide_pattern");
+            break;
+        case HapticType.ButterflyHug:
+            bHapticsSDK.Play("butterfly_hug_taps");
+            break;
+    }
+}
+```
+
+---
+
+<br>
+
+## 🔬 Experiment Design
+
+실험 설계
+
+<div align="center">
+  <img src="ReadMe/VREnvironment.png" width="60%" />
+</div>
+
+<br>
+
+### 🎭 VRET Environment Design
+
+VRET 환경 설계
+
+The VR public speaking simulation was built in **Unity Engine** with psychological pressure elements:
+
+VR 발표 시뮬레이션은 **Unity Engine**으로 심리적 압박 요소를 포함하여 구현했습니다:
+
+| Element | Implementation | Purpose |
+|:--|:--|:--|
+| **Audience NPCs** | Animator Controller with Idle/Clapping/Questioning states<br>Idle/Clapping/Questioning 상태를 가진 Animator Controller | Social pressure simulation<br>사회적 압박 시뮬레이션 |
+| **Event Sequences** | Timeline + Playable Director for host, warnings, disruptions<br>사회자, 경고, 돌발 상황을 위한 Timeline + Playable Director | Controlled stressor delivery<br>통제된 스트레스 요인 전달 |
+| **Interactions** | Ray Interactor for PPT control, script checking<br>PPT 제어, 대본 확인을 위한 Ray Interactor | Realistic task engagement<br>현실적인 과제 몰입 |
+| **UI Elements** | World Space Canvas for recording indicator, timer<br>녹화 표시, 타이머를 위한 World Space Canvas | Performance pressure<br>수행 압박 |
+| **Scene Transitions** | Async Scene Loading with fade effects<br>페이드 효과가 적용된 비동기 씬 로딩 | Immersion maintenance<br>몰입 유지 |
+
+<br>
+
+### 📋 Experiment Protocol
+
+실험 프로토콜
+
+| Variable Type | Definition |
+|:--|:--|
+| **Control** | Presentation content & interactions (constant across conditions)<br>발표 콘텐츠 및 상호작용 (모든 조건에서 동일) |
+| **Independent** | Haptic feedback type (None / Slow / Breathing / Butterfly)<br>햅틱 피드백 유형 (없음 / 느린 진동 / 심호흡 유도 / 나비포옹법) |
+| **Dependent** | Heart rate change (BPM delta)<br>심박수 변화 (BPM 델타) |
+
+<br>
+
+**Participants**: N=10 (5M/5F), ages 20-25, university students
+
+**참가자**: N=10 (남 5명/여 5명), 20-25세, 대학생
+
+**Procedure | 절차**:
+1. Pre-survey & VR usage briefing | 사전 설문 및 VR 사용법 안내
+2. Equipment fitting (VR HMD + Galaxy Watch + bhaptics Suit) | 장비 착용
+3. Waiting room phase → Presentation phase | 대기실 단계 → 발표 단계
+4. **4 trials per participant** (one per feedback condition, counterbalanced) | 참가자당 4회 시행 (피드백 조건별 1회, 역균형화)
+5. Post-experiment SUS questionnaire | 실험 후 SUS 설문
+
+---
+
+<br>
+
+## 📊 Data Analysis
+
+데이터 분석
+
+### 🔄 Data Preprocessing Pipeline
+
+데이터 전처리 파이프라인
+
+```python
+import pandas as pd
+import numpy as np
+
+def preprocess_biometric_data(filepath):
+    # Load raw CSV
+    df = pd.read_csv(filepath)
+    
+    # Handle missing values
+    df['HeartRate'] = df['HeartRate'].fillna(df['HeartRate'].median())
+    
+    # Encode categorical feedback types
+    feedback_map = {
+        'None': 0, 'SlowVibration': 1, 
+        'BreathingGuide': 2, 'ButterflyHug': 3
+    }
+    df['FeedbackEncoded'] = df['FeedbackType'].map(feedback_map)
+    
+    # Validate timestamp uniformity
+    df['Timestamp'] = pd.to_datetime(df['Timestamp'])
+    df['TimeDelta'] = df['Timestamp'].diff().dt.total_seconds()
+    
+    return df
+```
+
+<br>
+
+### 📈 Statistical Analysis Results
+
+통계 분석 결과
+
+<div align="center">
+
+| Condition | Mean HR (BPM) | Δ from Baseline |
+|:--|:--:|:--:|
+| **No Feedback** 피드백 없음 | 111 | — |
+| **With Feedback** 피드백 있음 | 107 | **-4 BPM** |
+
+</div>
+
+<br>
+
+**Key Findings | 주요 발견**:
+
+| Pattern | Immediacy<br>즉각성 | Duration<br>지속성 | Effectiveness<br>효과성 |
+|:--|:--:|:--:|:--:|
+| 🌬️ **Breathing Guide** 심호흡 유도 | ⭐⭐⭐ Immediate<br>즉각적 | ⭐⭐⭐ Longest<br>가장 김 | **Most Effective**<br>**가장 효과적** |
+| 🫀 **Slow Vibration** 느린 진동 | ⭐⭐⭐ Immediate<br>즉각적 | ⭐⭐ Moderate<br>보통 | Effective<br>효과적 |
+| 🦋 **Butterfly Hug** 나비포옹법 | ⭐ Delayed (2-3 reps)<br>지연 (2-3회 반복 후) | ⭐ Short<br>짧음 | Least Effective<br>가장 낮음 |
+
+<br>
+
+### 📉 Time-Series Analysis
+
+시계열 분석
+
+```python
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+def analyze_feedback_effect(df, feedback_event_time):
+    # Extract pre/post feedback windows
+    window_before = df[df['Timestamp'] < feedback_event_time].tail(30)
+    window_after = df[df['Timestamp'] >= feedback_event_time].head(60)
+    
+    # Calculate HR change trajectory
+    pre_mean = window_before['HeartRate'].mean()
+    post_trajectory = window_after['HeartRate'].rolling(5).mean()
+    
+    # Visualize
+    plt.figure(figsize=(12, 6))
+    plt.axvline(x=0, color='red', linestyle='--', label='Feedback Trigger')
+    plt.plot(range(-30, 60), 
+             pd.concat([window_before['HeartRate'], 
+                       window_after['HeartRate']]).values)
+    plt.xlabel('Time (seconds from trigger)')
+    plt.ylabel('Heart Rate (BPM)')
+    plt.title('HR Response to Haptic Feedback')
+    plt.legend()
+    
+    return post_trajectory
+```
+
+**Observations | 관찰 결과**:
+- Feedback-triggered group showed HR spike to 120-130 BPM upon waiting room entry<br>피드백이 발생한 그룹은 대기실 입장 시 심박수가 120-130 BPM으로 급상승
+- Breathing guide and slow vibration showed **immediate** HR reduction post-trigger<br>심호흡 유도와 느린 진동은 트리거 후 **즉각적인** 심박수 감소를 보임
+- Butterfly hug required **2-3 repetitions** before measurable effect<br>나비포옹법은 측정 가능한 효과가 나타나기까지 **2-3회 반복** 필요
+
+<br>
+
+### 📝 Usability Evaluation
+
+사용성 평가
+
+| Metric | Score | Interpretation |
+|:--|:--:|:--|
+| **SUS Score** | 78.95 / 100 | Good usability<br>양호한 사용성 |
+| **Perceived Effectiveness** 인지된 효과성 | 4.0 / 5.0 | Positive user perception of haptic calming<br>햅틱 이완 효과에 대한 긍정적 인식 |
+
+---
+
+<br>
+
+## 🏆 Publications & Awards
+
+출판 및 수상
+
+<div align="center">
+
+### 📄 Publication
+
+**[Designing Haptic Feedback for Social Phobia Improvement and VRET Environment for Data Analysis](https://www.dbpia.co.kr/journal/articleDetail?nodeId=NODE11862533)**
+
+*Korea Computer Congress (KCC) 2024*  
+Jaehyun Byun, Jihye Ryu, Seokhee Jeon
+
+<br>
+
+### 🥇 Awards
+
+| Award | Event | Year |
+|:--|:--|:--|
+| 🏆 **학부생 우수논문상** | Korea Computer Congress (KCC) 2024 | 2024 |
+| 🌏 **Honored Partner Startup Exhibition** | Vietnam Mobile Summit 2024 | 2024 |
+
+</div>
+
+---
+
+<br>
+
+## 💡 Lessons Learned
+
+프로젝트 인사이트
+
+### 🔧 Cross-Platform Integration Problem-Solving
+
+이종 플랫폼 통합에서의 기술적 문제 해결
+
+Initially attempted native Galaxy Watch → WebSocket server integration, but faced API permission delays and Wear OS complexity. Pivoted to **HypeRate third-party relay service**, reducing development overhead while maintaining functionality. Learned that leveraging external solutions can be strategic for resource-constrained projects.
+
+초기에는 갤럭시 워치에서 서버를 통해 직접 심박수 데이터를 전송하는 네이티브 연동을 시도했으나, 갤럭시 헬스케어 API 허가 지연과 Wear OS 개발 복잡도 문제에 직면했습니다. **HypeRate 서드파티 중계 서비스**로 전환하여 기능은 유지하면서 개발 복잡도를 낮출 수 있었습니다. 모든 것을 직접 구현하기보다 외부 솔루션을 적절히 활용하는 것이 제한된 리소스 내 프로젝트를 완수하는 전략임을 배웠습니다.
+
+### 📊 Data-Driven Decision Making
+
+데이터 기반 의사결정의 중요성
+
+Designed timestamp-synchronized logging to answer "which haptic pattern works best?" The pipeline enabled quantitative comparison across conditions, conclusively identifying breathing-guided haptics as optimal. Experienced firsthand how **data pipeline design creates the foundation for evidence-based decisions**.
+
+"어떤 햅틱 패턴이 가장 효과적인가?"라는 질문에 답하기 위해 타임스탬프 동기화 로깅 시스템을 설계했습니다. 파이프라인을 통해 조건 간 정량적 비교가 가능해졌고, 심호흡 유도 햅틱이 최적이라는 결론을 도출할 수 있었습니다. **데이터 파이프라인 설계가 근거 기반 의사결정의 토대가 되는 과정**을 직접 체감했습니다.
+
+### 🚀 Research to Product Transition
+
+학술 연구에서 창업 아이템으로의 전환
+
+Post-KCC publication, preparing for Vietnam Mobile Summit revealed the gap between academic validation and market application. Research requires controlled experiments and statistical rigor; startup exhibition demands **immediate value proposition and demonstrable prototypes**. Refined UX based on qualitative feedback and simplified technical complexity for general users.
+
+KCC 2024 논문 발표 이후 Vietnam Mobile Summit 전시를 준비하면서 학술적 검증과 시장 적용 사이의 간극을 경험했습니다. 논문에서는 통제된 실험과 통계적 엄밀성이 핵심이었다면, 창업 전시에서는 **즉각적인 가치 제안과 시연 가능한 프로토타입**이 필요했습니다. 정성 평가에서 도출된 사용성 이슈를 개선하고 복잡한 기술 스택을 일반 사용자를 위해 단순화하고자 했습니다.
+
+---
+
+<br>
+
+## 📚 References
+
+1. 권석만. 현대 이상심리학. 서울 학지사. 2012
+2. Azevedo, R.T., et al. The calming effect of a new wearable device during the anticipation of public speech. Sci Rep 7, 2285. 2017
+3. Haynes AC, et al. A calming hug: Design and validation of a tactile aid to ease anxiety. PLoS One. 2022
+4. Deusdado & Antunes. VR rehabilitation with bHaptics TactSuit. 2023
+5. Heimberg, R.G. Cognitive-behavioral therapy for social anxiety disorder. Biological Psychiatry, 51, 101-108. 2002
+
+---
+
+<div align="center">
+
+### 📬 Contact
+
+For questions about this research, please contact:  
+**Jaehyun Byun** — bjh1750@khu.ac.kr
+
+</div>
