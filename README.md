@@ -1,19 +1,21 @@
 <div align="center">
 
-# 🧘 Calmpilot
+# ⌚ Calmpilot
 
   <img src="ReadMe/Introduce.gif" width="50%" />
 
-> *"Let your body calm itself." "몸이 스스로 안정을 찾도록."*  
-> *Real-time biometrics meet adaptive haptic feedback. 실시간 생체 신호가 적응형 햅틱 피드백을 만나다.*
+> *Real-time biometric pipeline for adaptive haptic feedback in VR*. *VR 적응형 햅틱을 위한 실시간 생체 데이터 파이프라인*  
+> User study: 3 haptic patterns × 10 participants, HR time-series analysis. *사용자 연구: 3가지 햅틱 패턴 × 10명, 데이터 분석.*
 
 </div>
 
-🧘 Calmpilot is a **research project investigating how haptic feedback patterns affect anxiety reduction in VR exposure therapy**. Using real-time heart rate data from wearables, the system automatically triggers calming haptic patterns when physiological arousal exceeds thresholds. We designed three clinically-grounded haptic patterns—slow vibration, breathing guidance, and butterfly hug—and validated their effectiveness through controlled experiments in a VR public speaking scenario. Our findings show that breathing-guided haptics achieved the most significant and sustained heart rate reduction (avg. 4 BPM decrease).
+<br>
+
+📊 Calmpilot is a **user study investigating how haptic feedback patterns affect physiological arousal in VR**. The system uses real-time heart rate data from wearables to automatically trigger calming haptics when arousal exceeds thresholds. We compared three patterns—slow vibration, breathing guidance, and butterfly hug—in a controlled VR public speaking experiment (N=10). Breathing-guided haptics achieved the most sustained heart rate reduction (avg. -4 BPM).
 
 <br>
 
-🧘 Calmpilot은 **VR 노출 치료에서 햅틱 피드백 패턴이 불안 감소에 미치는 영향을 연구한 프로젝트**입니다. 웨어러블 디바이스의 실시간 심박수 데이터를 활용해 생리적 각성이 임계값을 초과하면 자동으로 이완 햅틱 패턴을 트리거합니다. 임상적으로 검증된 세 가지 햅틱 패턴—느린 진동, 심호흡 유도, 나비포옹법—을 설계하고 VR 발표 환경에서 통제된 실험을 통해 효과를 검증했습니다. 분석 결과 심호흡 유도 햅틱이 가장 유의미하고 지속적인 심박수 감소(평균 4 BPM 감소)를 보였습니다.
+📊 Calmpilot은 **VR 프로그램을 활용한 노출 치료에서 햅틱 피드백 패턴이 불안 감소에 미치는 영향을 연구한 프로젝트**입니다. 웨어러블 디바이스의 실시간 심박수 데이터를 활용해 임계값을 초과하면 자동으로 이완 햅틱 패턴을 트리거합니다. 임상적으로 검증된 세 가지 햅틱 패턴—느린 진동, 심호흡 유도, 나비포옹법—을 설계하고 VR 발표 환경에서 통제된 실험을 통해 효과를 검증했습니다. 분석 결과 심호흡 유도 햅틱이 가장 유의미하고 지속적인 심박수 감소(평균 4 BPM 감소)를 보였습니다.
 
 ---
 
@@ -39,7 +41,7 @@
 ### 📖 Introduce
 
 **Project**: Calmpilot  
-**Type**: Academic Research (First Author)  
+**Type**: Academic Research 
 **Duration**: 2023.09 ~ 2024.02  
 **Advisor**: Prof. Seokhee Jeon (KHU Haptics and Virtual Reality Lab)
 
@@ -54,7 +56,7 @@
 | 💻 Research | First Author, System Design & Data Pipeline | [Jaehyun Byun](https://github.com/BynPlay) | Kyung Hee Univ.<br>Computer Science |
 | 💻 Research | Co-Author, Experiment Support | [Jihye Ryu](https://github.com/Domwis-IR) | Kyung Hee Univ.<br>Software Convergence |
 | 💻 Research | Co-Author, Data Analysis | [Hyeon Roh](https://github.com/YesHyeon) | Kyung Hee Univ.<br>Industrial & Management Engineering |
-| 🎓 Advisor | Academic Advisor | [Prof. Seokhee Jeon](http://haptics.khu.ac.kr/) |  Kyung Hee Univ.<br>HVR Lab | 
+| 🎓 Advisor | Academic Advisor | [Prof. Seokhee Jeon](http://haptics.khu.ac.kr/) |  Kyung Hee Univ.<br>Haptics and Virtual Reality Lab | 
 
 </div>
 
@@ -64,49 +66,29 @@
 
 ## 📚 Research Background
 
-<div align="center">
-
-### 🎯 Research Question
-
-</div>
-
-> **How can we design a data pipeline that connects real-time biometric collection to automated therapeutic intervention?**  
-> 사용자 데이터를 정량적으로 분석하고 이를 활용하기 위해서는 데이터 수집부터 의사 결정까지 어떻게 연결할 수 있을까?
-
-<br>
-
 ### 📖 Problem Statement
 
-Social anxiety disorder affects approximately **7.6% of children globally**, with university students showing particularly high prevalence—4 out of 10 experience social anxiety symptoms. While exposure therapy combined with relaxation training shows superior treatment outcomes, two critical barriers exist:
+Social anxiety disorder causes excessive fear in social interactions—**4 out of 10 university students** experience these symptoms. While exposure therapy with cognitive feedback shows superior outcomes, two barriers exist: (1) CBT specialists require 1+ years of training, and (2) real-time third-party intervention is nearly impossible during social interactions.
 
-사회 공포증은 전 세계 아동의 약 **7.6%**에게 영향을 미치며, 특히 대학생 집단에서 높은 유병률을 보입니다—10명 중 4명이 사회적 상황에서 불안을 경험합니다. 노출 요법과 이완 훈련을 병합하면 치료 효과가 우수하지만, 두 가지 핵심적인 장벽이 존재합니다:
+사회 공포증은 사회적 상호작용에서 과도한 불안을 유발하며, **대학생 10명 중 4명**이 이를 경험합니다. 노출 요법에 인지적 피드백을 병합하면 효과가 우수하지만 두 가지 장벽이 존재합니다: (1) 인지행동치료 전문가 양성에 최소 1년 이상 소요, (2) 사회적 상호작용 중에는 제3자의 실시간 개입이 어려움.
 
-| Challenge | Description |
-|:--|:--|
-| **Expert Scarcity** | CBT specialists require 1+ years of training; supply cannot meet demand<br>인지행동치료 전문가 양성에 최소 1년 이상 소요, 수요 대비 공급 부족 |
-| **Real-time Intervention** | Third-party cognitive guidance is nearly impossible during social interactions<br>사회적 상호작용 중 제3자의 실시간 인지 행동 유도가 어려움 |
+### 🔍 Prior Work & Insight
 
-<br>
+This research designed a biometric-driven automatic haptic feedback pipeline (Galaxy Watch → WebSocket → Unity → bhaptics) for VR exposure therapy, and compared which haptic pattern most effectively reduces tension through a controlled user study.
 
-### 🔍 Prior Work
+본 연구는 VR 노출 치료 중 생체 신호 기반 **자동화된 햅틱 피드백 파이프라인(Galaxy Watch → WebSocket → Unity → bhaptics)** 을 설계하고, 통제된 사용자 연구를 통해 어떤 햅틱 패턴이 긴장 완화에 가장 효과적인지 비교했습니다.
 
-| Study | Key Finding | Our Application |
+| Study | Key Finding | Our Pattern |
 |:--|:--|:--|
-| **Azevedo et al. (2017)** | Wrist vibration 20% slower than resting HR reduced anticipatory anxiety (p=0.027 skin conductance, p=0.047 self-report)<br>안정 시 심박수보다 20% 느린 손목 진동이 예기 불안 감소 | Slow vibration pattern at sub-heartbeat frequency<br>심박수 이하 주파수의 느린 진동 패턴 |
-| **Haynes et al. (2022)** | Breathing-guided haptic cushion most effective among 5 prototypes for tension relief<br>5가지 프로토타입 중 심호흡 유도 햅틱 쿠션이 긴장 완화에 가장 효과적 | Abdominal breathing guidance pattern<br>복식호흡 유도 패턴 |
-| **Deusdado & Antunes (2023)** | bHaptics TactSuit in VR rehabilitation: sequential motor activation for emotional connection<br>VR 재활에서 bHaptics TactSuit의 순차적 모터 활성화가 정서적 교감 전달 | Butterfly hug pattern with alternating shoulder taps<br>양쪽 어깨 교차 탭의 나비포옹법 패턴 |
+| **Azevedo et al. (2017)** | Vibration 20% slower than resting HR reduced anxiety | Slow vibration |
+| **Haynes et al. (2022)** | Breathing-guided haptic most effective for tension relief | Breathing guidance |
+| **Butterfly Hug (EMDR)** | Alternating shoulder taps used in trauma therapy | Butterfly hug |
 
 ---
 
 <br>
 
 ## ⚙️ System Architecture
-
-<div align="center">
-  <img src="ReadMe/Architecture.png" width="70%" />
-</div>
-
-<br>
 
 ### 🔧 Cross-Platform Data Pipeline
 
@@ -125,8 +107,6 @@ Social anxiety disorder affects approximately **7.6% of children globally**, wit
                         └──────────────────┘    └──────────────────┘
 ```
 
-<br>
-
 ### 📡 Real-time Heart Rate Streaming
 
 실시간 심박수 스트리밍
@@ -137,8 +117,6 @@ Social anxiety disorder affects approximately **7.6% of children globally**, wit
 | **Middleware** | HypeRate WebSocket relay—unified API for diverse wearables<br>HypeRate WebSocket 중계—다양한 웨어러블 통합 API |
 | **Reception** | Unity HypeRate SDK, real-time BPM variable access<br>Unity HypeRate SDK, 실시간 BPM 변수 접근 |
 | **Threshold** | HR ≥ 115 BPM triggers haptic feedback (pilot test max: 130, normal: 60-100)<br>심박수 115 이상 시 햅틱 피드백 트리거 (파일럿 테스트 최대: 130, 정상: 60-100) |
-
-<br>
 
 ### 📝 Timestamp-Synchronized Logging System
 
@@ -169,26 +147,13 @@ public class BiometricLogger : MonoBehaviour
     }
 }
 ```
-
-| Log Type | Data Captured | Interval |
-|:--|:--|:--|
-| **Heart Rate** | BPM + Timestamp<br>심박수 + 타임스탬프 | 5-second sampling<br>5초 간격 샘플링 |
-| **Haptic Events** | Pattern type + Trigger time<br>패턴 유형 + 트리거 시각 | On occurrence<br>발생 시 |
-| **Scene Phases** | Waiting room entry/exit, Presentation start/end<br>대기실 입장/퇴장, 발표 시작/종료 | On transition<br>전환 시 |
-
 ---
-
-<br>
 
 ## 🎨 Haptic Feedback Design
 
-햅틱 피드백 설계
-
 <div align="center">
-  <img src="ReadMe/HapticDesign.png" width="60%" />
+  <img src="ReadMe/CalmPilot_발표자료.gif" width="60%" />
 </div>
-
-<br>
 
 ### 🎛️ Three Clinically-Grounded Patterns
 
@@ -204,61 +169,17 @@ Patterns were designed using **bhaptics Designer**—a web-based haptic authorin
 | **🌬️ Breathing Guide** | Haynes (2022): Most effective for tension relief<br>긴장 완화에 가장 효과적 | Abdominal-centered expanding/contracting circular vibration pattern<br>복부 중앙 기준 확장/수축하는 원형 진동 패턴 |
 | **🦋 Butterfly Hug** | EMDR-based trauma therapy technique<br>EMDR 기반 외상 치료 기법 | Alternating single taps on left/right shoulders<br>양쪽 어깨를 번갈아 단발적으로 두드림 |
 
-<br>
-
-### 🔄 Adaptive Trigger Algorithm
-
-적응형 트리거 알고리즘
-
-```csharp
-// Threshold-based Haptic Trigger
-void Update()
-{
-    if (currentHeartRate >= THRESHOLD_BPM)  // 115 BPM
-    {
-        if (!isFeedbackActive && CanTriggerFeedback())
-        {
-            TriggerHapticPattern(assignedPattern);
-            LogFeedbackEvent(assignedPattern, currentHeartRate);
-            isFeedbackActive = true;
-        }
-    }
-}
-
-void TriggerHapticPattern(HapticType type)
-{
-    switch (type)
-    {
-        case HapticType.SlowVibration:
-            bHapticsSDK.Play("slow_vibration_10s");
-            break;
-        case HapticType.BreathingGuide:
-            bHapticsSDK.Play("breathing_guide_pattern");
-            break;
-        case HapticType.ButterflyHug:
-            bHapticsSDK.Play("butterfly_hug_taps");
-            break;
-    }
-}
-```
-
 ---
 
 <br>
 
 ## 🔬 Experiment Design
 
-실험 설계
+### 🎭 VRET Environment Design
 
 <div align="center">
   <img src="ReadMe/VREnvironment.png" width="60%" />
 </div>
-
-<br>
-
-### 🎭 VRET Environment Design
-
-VRET 환경 설계
 
 The VR public speaking simulation was built in **Unity Engine** with psychological pressure elements:
 
@@ -276,27 +197,16 @@ VR 발표 시뮬레이션은 **Unity Engine**으로 심리적 압박 요소를 �
 
 ### 📋 Experiment Protocol
 
-실험 프로토콜
-
-| Variable Type | Definition |
+| Variable | Definition |
 |:--|:--|
-| **Control** | Presentation content & interactions (constant across conditions)<br>발표 콘텐츠 및 상호작용 (모든 조건에서 동일) |
-| **Independent** | Haptic feedback type (None / Slow / Breathing / Butterfly)<br>햅틱 피드백 유형 (없음 / 느린 진동 / 심호흡 유도 / 나비포옹법) |
-| **Dependent** | Heart rate change (BPM delta)<br>심박수 변화 (BPM 델타) |
-
-<br>
+| **Control** | Presentation content & interactions (constant) |
+| **Independent** | Haptic type: None / Slow / Breathing / Butterfly |
+| **Dependent** | Heart rate change (BPM Δ) |
 
 **Participants**: N=10 (5M/5F), ages 20-25, university students
 
-**참가자**: N=10 (남 5명/여 5명), 20-25세, 대학생
-
-**Procedure | 절차**:
-1. Pre-survey & VR usage briefing | 사전 설문 및 VR 사용법 안내
-2. Equipment fitting (VR HMD + Galaxy Watch + bhaptics Suit) | 장비 착용
-3. Waiting room phase → Presentation phase | 대기실 단계 → 발표 단계
-4. **4 trials per participant** (one per feedback condition, counterbalanced) | 참가자당 4회 시행 (피드백 조건별 1회, 역균형화)
-5. Post-experiment SUS questionnaire | 실험 후 SUS 설문
-
+**Procedure**: Pre-survey → Equipment fitting (VR + Watch + bhaptics) → Waiting room → Presentation → Post-SUS
+- 4 trials per participant (within-subjects, counterbalanced)
 ---
 
 <br>
