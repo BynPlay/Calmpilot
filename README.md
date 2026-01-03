@@ -235,9 +235,9 @@ Raw CSV data (HR + timestamp + feedback type) was cleaned by handling missing va
 
 | Pattern | Immediacy | Duration | Effectiveness |
 |:--|:--:|:--:|:--:|
-| 🌬️ Breathing Guide | ⭐⭐⭐ Immediate | ⭐⭐⭐ Longest | **Most Effective** |
-| 🫀 Slow Vibration | ⭐⭐⭐ Immediate | ⭐⭐ Moderate | Effective |
-| 🦋 Butterfly Hug | ⭐ Delayed (2-3 reps) | ⭐ Short | Least Effective |
+| 🌬️ Breathing Guide | Immediate | Longest | **Most Effective** |
+| 🫀 Slow Vibration | Immediate | Moderate | Effective |
+| 🦋 Butterfly Hug | Delayed (2-3 reps) | Short | Least Effective |
 
 </div>
 
