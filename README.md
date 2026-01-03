@@ -5,9 +5,7 @@
   <img src="ReadMe/Introduce.jpg" width="50%" />
 
 > *Real-time biometric pipeline for adaptive haptic feedback in VR*   
-> *VR 적응형 햅틱을 위한 실시간 생체 데이터 파이프라인*  
 > User study: 3 haptic patterns × 10 participants, HR time-series analysis    
-> *사용자 연구: 3가지 햅틱 패턴 × 10명, 데이터 분석.*
 
 </div>
 
