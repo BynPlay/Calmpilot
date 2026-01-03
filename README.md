@@ -45,7 +45,7 @@
 **Project**: Calmpilot  
 **Type**: Academic Research 
 **Duration**: 2023.09 ~ 2024.02  
-**Advisor**: Prof. Seokhee Jeon (KHU Haptics and Virtual Reality Lab)
+**Advisor**: Seokhee Jeon (KHU Haptics and Virtual Reality Lab)
 
 ![C#](https://img.shields.io/badge/C%23-239120?style=flat-square&logo=csharp&logoColor=white) ![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white) | ![Unity](https://img.shields.io/badge/Unity-000000?style=flat-square&logo=unity&logoColor=white) ![Galaxy Watch](https://img.shields.io/badge/Galaxy_Watch-1428A0?style=flat-square&logo=samsung&logoColor=white) ![bhaptics](https://img.shields.io/badge/bhaptics-FF6B35?style=flat-square&logoColor=white) | ![Pandas](https://img.shields.io/badge/Pandas-150458?style=flat-square&logo=pandas&logoColor=white) ![Seaborn](https://img.shields.io/badge/Seaborn-3776AB?style=flat-square&logoColor=white) | ![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white) ![Notion](https://img.shields.io/badge/Notion-000000?style=flat-square&logo=notion&logoColor=white)
 
