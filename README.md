@@ -2,10 +2,12 @@
 
 # ⌚ Calmpilot
 
-  <img src="ReadMe/Introduce.gif" width="50%" />
+  <img src="ReadMe/Introduce.jpg" width="50%" />
 
-> *Real-time biometric pipeline for adaptive haptic feedback in VR*. *VR 적응형 햅틱을 위한 실시간 생체 데이터 파이프라인*  
-> User study: 3 haptic patterns × 10 participants, HR time-series analysis. *사용자 연구: 3가지 햅틱 패턴 × 10명, 데이터 분석.*
+> *Real-time biometric pipeline for adaptive haptic feedback in VR*   
+> *VR 적응형 햅틱을 위한 실시간 생체 데이터 파이프라인*  
+> User study: 3 haptic patterns × 10 participants, HR time-series analysis    
+> *사용자 연구: 3가지 햅틱 패턴 × 10명, 데이터 분석.*
 
 </div>
 
@@ -175,11 +177,12 @@ Patterns were designed using **bhaptics Designer**—a web-based haptic authorin
 
 ## 🔬 Experiment Design
 
+<div align="center">
+
 ### 🎭 VRET Environment Design
 
-<div align="center">
-  <img src="ReadMe/VREnvironment.png" width="60%" />
-</div>
+  <img src="ReadMe/w2.gif" width="400" height="300" />
+  <img src="ReadMe/w3.gif" width="400" height="300" />
 
 The VR public speaking simulation was built in **Unity Engine** with psychological pressure elements:
 
@@ -192,6 +195,8 @@ VR 발표 시뮬레이션은 **Unity Engine**으로 심리적 압박 요소를 �
 | **Interactions** | Ray Interactor for PPT control, script checking<br>PPT 제어, 대본 확인을 위한 Ray Interactor | Realistic task engagement<br>현실적인 과제 몰입 |
 | **UI Elements** | World Space Canvas for recording indicator, timer<br>녹화 표시, 타이머를 위한 World Space Canvas | Performance pressure<br>수행 압박 |
 | **Scene Transitions** | Async Scene Loading with fade effects<br>페이드 효과가 적용된 비동기 씬 로딩 | Immersion maintenance<br>몰입 유지 |
+
+</div>
 
 <br>
 
@@ -222,9 +227,8 @@ Raw CSV data (HR + timestamp + feedback type) was cleaned by handling missing va
 ### 📈 Statistical Results
 
 <div align="center">
-  <img src="ReadMe/Statistical1.png" width="45%" />
-  <img src="ReadMe/Statistical2.png" width="45%" />
-</div>
+  <img src="ReadMe/Stat1.png" width="45%" />
+  <img src="ReadMe/Stat2.png" width="45%" />
 
 | Condition | Mean HR (BPM) | Δ from Baseline |
 |:--|:--:|:--:|
@@ -237,10 +241,12 @@ Raw CSV data (HR + timestamp + feedback type) was cleaned by handling missing va
 | 🫀 Slow Vibration | ⭐⭐⭐ Immediate | ⭐⭐ Moderate | Effective |
 | 🦋 Butterfly Hug | ⭐ Delayed (2-3 reps) | ⭐ Short | Least Effective |
 
+</div>
+
 ### 📉 Time-Series Observations
 
 <div align="center">
-  <img src="ReadMe/TimeSeries.png" width="60%" />
+  <img src="ReadMe/timeseries.png" width="60%" />
 </div>
 
 - Feedback-triggered group: HR spiked to 120-130 BPM upon waiting room entry
@@ -252,18 +258,17 @@ Raw CSV data (HR + timestamp + feedback type) was cleaned by handling missing va
 <div align="center">
   <img src="ReadMe/Usability1.png" width="45%" />
   <img src="ReadMe/Usability2.png" width="45%" />
-</div>
 
 | Metric | Score |
 |:--|:--:|
 | SUS Score | 78.95 / 100 (Good) |
 | Perceived Effectiveness | 4.0 / 5.0 |
 
+</div>
+
 <br>
 
 ## 🏆 Publications & Awards
-
-출판 및 수상
 
 <div align="center">
 
