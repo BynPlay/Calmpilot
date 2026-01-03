@@ -179,8 +179,8 @@ Patterns were designed using **bhaptics Designer**—a web-based haptic authorin
 
 ### 🎭 VRET Environment Design
 
-  <img src="ReadMe/w2.gif" width="400" height="300" />
-  <img src="ReadMe/w3.gif" width="400" height="300" />
+  <img src="ReadMe/w2.gif" width="400" height="200" />
+  <img src="ReadMe/w3.gif" width="400" height="200" />
 
 The VR public speaking simulation was built in **Unity Engine** with psychological pressure elements:
 
