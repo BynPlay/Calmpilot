@@ -213,112 +213,51 @@ VR 발표 시뮬레이션은 **Unity Engine**으로 심리적 압박 요소를 �
 
 ## 📊 Data Analysis
 
-데이터 분석
+### 🔄 Data Preprocessing
 
-### 🔄 Data Preprocessing Pipeline
+Raw CSV data (HR + timestamp + feedback type) was cleaned by handling missing values with median imputation, encoding categorical feedback types to integers, and validating 1-second interval uniformity for synchronized analysis.
 
-데이터 전처리 파이프라인
+원시 CSV 데이터(심박수 + 타임스탬프 + 피드백 유형)를 전처리: 결측치는 중앙값 대체, 범주형 피드백 유형은 정수 인코딩, 1초 간격 균일성 검증 후 동기화 분석에 활용.
 
-```python
-import pandas as pd
-import numpy as np
-
-def preprocess_biometric_data(filepath):
-    # Load raw CSV
-    df = pd.read_csv(filepath)
-    
-    # Handle missing values
-    df['HeartRate'] = df['HeartRate'].fillna(df['HeartRate'].median())
-    
-    # Encode categorical feedback types
-    feedback_map = {
-        'None': 0, 'SlowVibration': 1, 
-        'BreathingGuide': 2, 'ButterflyHug': 3
-    }
-    df['FeedbackEncoded'] = df['FeedbackType'].map(feedback_map)
-    
-    # Validate timestamp uniformity
-    df['Timestamp'] = pd.to_datetime(df['Timestamp'])
-    df['TimeDelta'] = df['Timestamp'].diff().dt.total_seconds()
-    
-    return df
-```
-
-<br>
-
-### 📈 Statistical Analysis Results
-
-통계 분석 결과
+### 📈 Statistical Results
 
 <div align="center">
+  <img src="ReadMe/Statistical1.png" width="45%" />
+  <img src="ReadMe/Statistical2.png" width="45%" />
+</div>
 
 | Condition | Mean HR (BPM) | Δ from Baseline |
 |:--|:--:|:--:|
-| **No Feedback** 피드백 없음 | 111 | — |
-| **With Feedback** 피드백 있음 | 107 | **-4 BPM** |
+| No Feedback | 111 | — |
+| With Feedback | 107 | **-4 BPM** |
 
+| Pattern | Immediacy | Duration | Effectiveness |
+|:--|:--:|:--:|:--:|
+| 🌬️ Breathing Guide | ⭐⭐⭐ Immediate | ⭐⭐⭐ Longest | **Most Effective** |
+| 🫀 Slow Vibration | ⭐⭐⭐ Immediate | ⭐⭐ Moderate | Effective |
+| 🦋 Butterfly Hug | ⭐ Delayed (2-3 reps) | ⭐ Short | Least Effective |
+
+### 📉 Time-Series Observations
+
+<div align="center">
+  <img src="ReadMe/TimeSeries.png" width="60%" />
 </div>
 
-<br>
-
-**Key Findings | 주요 발견**:
-
-| Pattern | Immediacy<br>즉각성 | Duration<br>지속성 | Effectiveness<br>효과성 |
-|:--|:--:|:--:|:--:|
-| 🌬️ **Breathing Guide** 심호흡 유도 | ⭐⭐⭐ Immediate<br>즉각적 | ⭐⭐⭐ Longest<br>가장 김 | **Most Effective**<br>**가장 효과적** |
-| 🫀 **Slow Vibration** 느린 진동 | ⭐⭐⭐ Immediate<br>즉각적 | ⭐⭐ Moderate<br>보통 | Effective<br>효과적 |
-| 🦋 **Butterfly Hug** 나비포옹법 | ⭐ Delayed (2-3 reps)<br>지연 (2-3회 반복 후) | ⭐ Short<br>짧음 | Least Effective<br>가장 낮음 |
-
-<br>
-
-### 📉 Time-Series Analysis
-
-시계열 분석
-
-```python
-import seaborn as sns
-import matplotlib.pyplot as plt
-
-def analyze_feedback_effect(df, feedback_event_time):
-    # Extract pre/post feedback windows
-    window_before = df[df['Timestamp'] < feedback_event_time].tail(30)
-    window_after = df[df['Timestamp'] >= feedback_event_time].head(60)
-    
-    # Calculate HR change trajectory
-    pre_mean = window_before['HeartRate'].mean()
-    post_trajectory = window_after['HeartRate'].rolling(5).mean()
-    
-    # Visualize
-    plt.figure(figsize=(12, 6))
-    plt.axvline(x=0, color='red', linestyle='--', label='Feedback Trigger')
-    plt.plot(range(-30, 60), 
-             pd.concat([window_before['HeartRate'], 
-                       window_after['HeartRate']]).values)
-    plt.xlabel('Time (seconds from trigger)')
-    plt.ylabel('Heart Rate (BPM)')
-    plt.title('HR Response to Haptic Feedback')
-    plt.legend()
-    
-    return post_trajectory
-```
-
-**Observations | 관찰 결과**:
-- Feedback-triggered group showed HR spike to 120-130 BPM upon waiting room entry<br>피드백이 발생한 그룹은 대기실 입장 시 심박수가 120-130 BPM으로 급상승
-- Breathing guide and slow vibration showed **immediate** HR reduction post-trigger<br>심호흡 유도와 느린 진동은 트리거 후 **즉각적인** 심박수 감소를 보임
-- Butterfly hug required **2-3 repetitions** before measurable effect<br>나비포옹법은 측정 가능한 효과가 나타나기까지 **2-3회 반복** 필요
-
-<br>
+- Feedback-triggered group: HR spiked to 120-130 BPM upon waiting room entry
+- Breathing guide & slow vibration: **immediate** HR reduction post-trigger
+- Butterfly hug: required **2-3 repetitions** before measurable effect
 
 ### 📝 Usability Evaluation
 
-사용성 평가
+<div align="center">
+  <img src="ReadMe/Usability1.png" width="45%" />
+  <img src="ReadMe/Usability2.png" width="45%" />
+</div>
 
-| Metric | Score | Interpretation |
-|:--|:--:|:--|
-| **SUS Score** | 78.95 / 100 | Good usability<br>양호한 사용성 |
-| **Perceived Effectiveness** 인지된 효과성 | 4.0 / 5.0 | Positive user perception of haptic calming<br>햅틱 이완 효과에 대한 긍정적 인식 |
-
----
+| Metric | Score |
+|:--|:--:|
+| SUS Score | 78.95 / 100 (Good) |
+| Perceived Effectiveness | 4.0 / 5.0 |
 
 <br>
 
