@@ -55,9 +55,9 @@
 
 | Position | Role | Name | Affiliation |
 |:--|:--|:--|:--|
-| 💻 Research | First Author, System Design & Data Pipeline | [Jaehyun Byun](https://github.com/BynPlay) | Kyung Hee Univ.<br>Computer Science |
-| 💻 Research | Co-Author, Experiment Support | [Jihye Ryu](https://github.com/Domwis-IR) | Kyung Hee Univ.<br>Software Convergence |
-| 💻 Research | Co-Author, Data Analysis | [Hyeon Roh](https://github.com/YesHyeon) | Kyung Hee Univ.<br>Industrial & Management Engineering |
+| 💻 Research | First Author<br>Research Design & Game Client Development | [Jaehyun Byun](https://github.com/BynPlay) | Kyung Hee Univ.<br>Computer Science |
+| 💻 Research | Co-Author<br>Data Analysis | [Jihye Ryu](https://github.com/Domwis-IR) | Kyung Hee Univ.<br>Software Convergence |
+| 💻 Research | Co-Author, Backend Development | [Hyeon Roh](https://github.com/YesHyeon) | Kyung Hee Univ.<br>Industrial & Management Engineering |
 | 🎓 Advisor | Academic Advisor | [Seokhee Jeon](http://haptics.khu.ac.kr/) |  Kyung Hee Univ.<br>Haptics and Virtual Reality Lab | 
 
 </div>
